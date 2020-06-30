@@ -3,7 +3,8 @@ const router = express.Router();
 const path = require('path');
 const db = require('./../db')
 
-//
+//create table students( id serial PRIMARY KEY, fname VARCHAR(100) not NULL, lname VARCHAR(100) not NULL);
+
 // Return list of all students
 function fetchAllStudents(req,res){
     const query = ` SELECT * FROM students`;
@@ -58,13 +59,13 @@ router.get('/get/:studentId', (req,res)=>{
 })
 
 // New Student FOrm
-router.get('/new/student/', (req, res)=>{
+router.get('/register/', (req, res)=>{
     let filePath = path.resolve(__dirname, '..', 'static/student/enterStudentForm.html')
     res.sendFile(filePath)
 })
 
 // Submit New Student Form
-router.post('/new/student/', (req, res)=>{
+router.post('/register/', (req, res)=>{
     let fname = req.body.fname;
     let lname = req.body.lname;
 
